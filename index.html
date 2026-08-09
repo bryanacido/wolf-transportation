@@ -40,8 +40,10 @@
   .btn-o:hover{border-color:var(--gold);color:var(--gold)}
   .nav-links .btn{min-height:46px;padding:0 22px}
 
-  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:url("images/hero.jpg") center 30%/cover no-repeat}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.15) 40%,rgba(10,10,11,.92) 88%,var(--black) 100%)}
+  /* The source image has baked-in text near its bottom edge — keep the crop
+     high and the lower overlay near-opaque so it never shows through. */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:url("images/hero.jpg") center 12%/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.6) 0%,rgba(10,10,11,.22) 34%,rgba(10,10,11,.97) 72%,var(--black) 96%)}
   .hero-inner{position:relative;z-index:1;padding:120px 0 90px;max-width:640px}
   .hero h1{font-size:clamp(34px,5.4vw,58px);margin-bottom:18px}
   .hero h1 .g{color:var(--gold)}
