@@ -39,6 +39,9 @@
   .btn-o{background:transparent;color:var(--white);border:1px solid var(--line)}
   .btn-o:hover{border-color:var(--gold);color:var(--gold)}
   .nav-links .btn{min-height:46px;padding:0 22px}
+  /* .nav-links a would otherwise override the gold button's dark text */
+  .nav-links a.btn-g{color:#141310}
+  .nav-links a.btn-g:hover{color:#141310}
 
   /* The source image has baked-in text near its bottom edge — keep the crop
      high and the lower overlay near-opaque so it never shows through. */
