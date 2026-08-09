@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOLF Transportation — Luxury. Comfort. On Your Time.</title>
+<meta name="description" content="Miami's premier black car service. Luxury Sprinter vans, Mercedes-Benz S-Class, and Escalade — professional chauffeurs, on time, every time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0b;--coal:#121215;--panel:#1a1a1f;--line:#2a2a31;
+    --gold:#e9b64c;--gold-2:#c9962f;--white:#f5f4f1;--muted:#a3a3ab;--faint:#6d6d76;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--black);color:var(--white);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .display{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  a{color:var(--gold)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .kicker{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:28px;height:2px;background:var(--gold)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+  .brand .wm{font-family:'Archivo Black',sans-serif;font-size:22px;letter-spacing:.04em}
+  .brand small{display:block;font-size:9.5px;letter-spacing:.42em;color:var(--muted);font-weight:600}
+  .nav-links{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14.5px;padding:12px 15px;min-height:48px;display:inline-flex;align-items:center;border-radius:8px;transition:.2s}
+  .nav-links a:hover{color:var(--white)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:6px;font-weight:700;font-size:15.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.2s;border:none}
+  .btn-g{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#141310}
+  .btn-g:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(233,182,76,.5)}
+  .btn-o{background:transparent;color:var(--white);border:1px solid var(--line)}
+  .btn-o:hover{border-color:var(--gold);color:var(--gold)}
+  .nav-links .btn{min-height:46px;padding:0 22px}
+
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:url("images/hero.jpg") center 30%/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.15) 40%,rgba(10,10,11,.92) 88%,var(--black) 100%)}
+  .hero-inner{position:relative;z-index:1;padding:120px 0 90px;max-width:640px}
+  .hero h1{font-size:clamp(34px,5.4vw,58px);margin-bottom:18px}
+  .hero h1 .g{color:var(--gold)}
+  .hero p{font-size:19px;color:#d6d5d0;margin-bottom:32px;max-width:44ch;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .hero .row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .badges{display:flex;gap:12px;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.65);border:1px solid var(--line);border-radius:10px;padding:9px 18px;min-height:52px;color:var(--white);text-decoration:none}
+  .badge small{display:block;font-size:10px;color:var(--muted);line-height:1.2}
+  .badge b{font-size:15px;line-height:1.2}
+
+  section{padding:96px 0}
+  h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:14px}
+  .lede{color:var(--muted);max-width:58ch;margin-bottom:44px;font-size:18px}
+
+  .fleet{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+  .car{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+  .car:hover{transform:translateY(-6px);border-color:rgba(233,182,76,.5);box-shadow:0 26px 60px -28px rgba(0,0,0,.9)}
+  .car .shot{height:190px;background-image:url("images/fleet.jpg");background-size:cover}
+  .car.van .shot{background-position:42% 45%}
+  .car.sclass .shot{background-position:2% 55%}
+  .car.esc .shot{background-position:100% 45%}
+  .car .body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .car h3{font-size:19px;letter-spacing:.02em}
+  .car .meta{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:14.5px}
+  .car .price{margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px}
+  .car .price b{font-size:28px;color:var(--gold)}
+  .car .price small{color:var(--faint);font-size:13px}
+
+  .props{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+  .prop{background:var(--coal);border:1px solid var(--line);border-radius:14px;padding:30px 28px}
+  .prop .ic{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .prop h3{font-size:17px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .prop p{color:var(--muted);font-size:15.5px}
+
+  .scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .scene{position:relative;height:230px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background-image:url("images/scenes.jpg");background-size:100% auto}
+  .scene.s1{background-position:center 1%}
+  .scene.s2{background-position:center 50%}
+  .scene.s3{background-position:center 99%}
+  .scene span{position:absolute;left:16px;bottom:14px;background:rgba(10,10,11,.75);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;counter-reset:s}
+  .step{border-left:2px solid var(--gold);padding:6px 0 6px 22px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:'Archivo Black',sans-serif;color:var(--gold);font-size:15px;letter-spacing:.1em;display:block;margin-bottom:8px}
+  .step h3{font-size:17px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px}
+
+  .cta{position:relative;text-align:center;padding:110px 0;background:url("images/fleet.jpg") center 60%/cover no-repeat}
+  .cta::after{content:"";position:absolute;inset:0;background:rgba(10,10,11,.86)}
+  .cta .wrap{position:relative;z-index:1}
+  .cta h2{max-width:100%}
+  .cta p{color:var(--muted);max-width:52ch;margin:0 auto 32px}
+
+  footer{border-top:1px solid var(--line);padding:52px 0 42px;color:var(--muted)}
+  footer .cols{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  footer a{color:var(--white);text-decoration:none}
+  footer a:hover{color:var(--gold)}
+  footer .fine{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;font-size:13px;color:var(--faint)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="WOLF Transportation home">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 3l3 4 5-1 5 1 3-4 1 7-3 5-2 6-4-3-4 3-2-6-3-5 1-7z"/><path d="M9.5 12l1 1.5M14.5 12l-1 1.5M12 16.5l-1 1h2l-1-1z" stroke-linecap="round"/></svg>
+      <span><span class="wm">WOLF</span><small>TRANSPORTATION</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#fleet">Fleet</a>
+      <a href="#why">Why WOLF</a>
+      <a href="#how">How it works</a>
+      <a class="btn btn-g" href="#book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap"><div class="hero-inner">
+      <h1 class="display">Luxury. Comfort.<br><span class="g">On your time.</span></h1>
+      <p>Your premier ride, anytime, anywhere. Miami's black car service — chauffeured Sprinter vans, S-Class sedans, and Escalades, on time, every time.</p>
+      <div class="row">
+        <a class="btn btn-g" href="#book">Book your ride</a>
+        <a class="btn btn-o" href="#fleet">View the fleet</a>
+      </div>
+      <div class="badges">
+        <a class="badge" href="#book" aria-label="Download on the App Store (coming soon)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c0-2.4 1.96-3.55 2.05-3.6-1.12-1.63-2.86-1.86-3.47-1.88-1.48-.15-2.89.87-3.64.87-.75 0-1.91-.85-3.14-.83-1.61.02-3.1.94-3.93 2.38-1.68 2.9-.43 7.2 1.2 9.55.8 1.15 1.75 2.45 3 2.4 1.2-.05 1.66-.78 3.11-.78 1.45 0 1.86.78 3.13.75 1.3-.02 2.12-1.17 2.91-2.33.92-1.34 1.3-2.64 1.32-2.7-.03-.02-2.53-.97-2.54-3.83zM14.66 5.4c.66-.8 1.1-1.9.98-3-.95.04-2.1.63-2.78 1.43-.61.7-1.14 1.83-1 2.9 1.06.09 2.14-.53 2.8-1.33z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <a class="badge" href="#book" aria-label="Get it on Google Play (coming soon)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 13.7 12 3.6 21.7c-.37-.2-.6-.6-.6-1.1V3.4c0-.5.23-.9.6-1.1zm11.3 8.5 2.6-2.5 3.6 2.05c.9.5.9 1.8 0 2.3L17.5 14.7 14.9 12l.001-1.2zm-1.2 2.4 2.5 2.4-8.9 5.05 6.4-7.45zm2.5-7.2-2.5 2.4-6.4-7.45 8.9 5.05z"/></svg>
+          <span><small>Get it on</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div></div>
+  </div>
+
+  <section id="fleet">
+    <div class="wrap">
+      <div class="kicker reveal">The fleet</div>
+      <h2 class="display reveal">Arrive like you mean it.</h2>
+      <p class="lede reveal">Flat rates. No surge, no surprises. Every vehicle detailed before every trip, every chauffeur in professional attire.</p>
+      <div class="fleet">
+        <div class="car van reveal">
+          <div class="shot" role="img" aria-label="Black luxury Sprinter van"></div>
+          <div class="body">
+            <h3>Luxury Sprinter Van</h3>
+            <div class="meta"><span>Up to 6 passengers</span><span>Events · Groups</span></div>
+            <div class="price"><b>$150</b><small>per ride</small></div>
+          </div>
+        </div>
+        <div class="car sclass reveal">
+          <div class="shot" role="img" aria-label="Black Mercedes-Benz S 500 sedan"></div>
+          <div class="body">
+            <h3>Mercedes-Benz S 500</h3>
+            <div class="meta"><span>Up to 3 passengers</span><span>Executive</span></div>
+            <div class="price"><b>$250</b><small>per ride</small></div>
+          </div>
+        </div>
+        <div class="car esc reveal">
+          <div class="shot" role="img" aria-label="Black 2024 Cadillac Escalade"></div>
+          <div class="body">
+            <h3>2024 Escalade</h3>
+            <div class="meta"><span>Up to 6 passengers</span><span>VIP · Nights out</span></div>
+            <div class="price"><b>$300</b><small>per ride</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker reveal">Why WOLF</div>
+      <h2 class="display reveal">The standard, raised.</h2>
+      <div class="props" style="margin-top:40px">
+        <div class="prop reveal">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Professional drivers</h3>
+          <p>Safety and discretion you can trust. Vetted, uniformed chauffeurs who know Miami block by block.</p>
+        </div>
+        <div class="prop reveal">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>On time, every time</h3>
+          <p>Punctual service you can rely on — flight tracking for airport runs, early arrivals for events.</p>
+        </div>
+        <div class="prop reveal">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18h20l-2-9-5 3-3-6-3 6-5-3-2 9z"/><path d="M5 21h14"/></svg></div>
+          <h3>Luxury experience</h3>
+          <p>Premium vehicles for every occasion — leather interiors, privacy glass, water and chargers on board.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker reveal">Miami, after dark</div>
+      <h2 class="display reveal">Everywhere the night takes you.</h2>
+      <div class="scenes" style="margin-top:40px">
+        <div class="scene s1 reveal"><span>South Beach</span></div>
+        <div class="scene s2 reveal"><span>Brickell</span></div>
+        <div class="scene s3 reveal"><span>Downtown · MIA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker reveal">How it works</div>
+      <h2 class="display reveal">Three taps to the curb.</h2>
+      <div class="steps" style="margin-top:40px">
+        <div class="step reveal"><h3>Choose your ride</h3><p>Pick the Sprinter, S 500, or Escalade — flat rate shown up front.</p></div>
+        <div class="step reveal"><h3>Set pickup & drop-off</h3><p>Anywhere in Greater Miami — South Beach to MIA and back.</p></div>
+        <div class="step reveal"><h3>Ride and relax</h3><p>Track your chauffeur, then step out like the night is yours.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta" id="book">
+    <div class="wrap">
+      <div class="kicker reveal" style="justify-content:center">Reserve your ride</div>
+      <h2 class="display reveal">The smarter way to ride in <span style="color:var(--gold)">Miami</span>.</h2>
+      <p class="reveal">The WOLF booking app is in development — the live demo opens here soon. For now, reserve by phone or inquiry.</p>
+      <a class="btn btn-g reveal" href="tel:+13055550100">Call to reserve</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 3l3 4 5-1 5 1 3-4 1 7-3 5-2 6-4-3-4 3-2-6-3-5 1-7z"/></svg>
+          <span class="display" style="font-size:16px;color:var(--white)">WOLF <span style="color:var(--muted);font-size:10px;letter-spacing:.4em">TRANSPORTATION</span></span>
+        </div>
+        <p style="max-width:40ch;font-size:14.5px">Luxury. Comfort. On your time. Your premier ride, anytime, anywhere.</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:var(--white);margin-bottom:10px;font-size:14px;letter-spacing:.1em;text-transform:uppercase">Explore</p>
+        <p style="display:grid;gap:8px;font-size:15px">
+          <a href="#fleet">Fleet & rates</a>
+          <a href="#why">Why WOLF</a>
+          <a href="#book">Reserve</a>
+        </p>
+      </div>
+    </div>
+    <div class="fine">The Wolf of Transportation — demonstration website. Imagery provided by the client. Vehicles, rates, and availability shown are sample data.</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
