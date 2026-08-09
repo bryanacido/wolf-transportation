@@ -64,10 +64,10 @@
   .fleet{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
   .car{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
   .car:hover{transform:translateY(-6px);border-color:rgba(233,182,76,.5);box-shadow:0 26px 60px -28px rgba(0,0,0,.9)}
-  .car .shot{height:190px;background-image:url("images/fleet.jpg");background-size:cover}
-  .car.van .shot{background-position:42% 45%}
-  .car.sclass .shot{background-position:2% 55%}
-  .car.esc .shot{background-position:100% 45%}
+  .car .shot{height:190px;background-size:cover;background-position:center}
+  .car.van .shot{background-image:url("images/van.jpg")}
+  .car.sclass .shot{background-image:url("images/s500.jpg")}
+  .car.esc .shot{background-image:url("images/escalade.jpg")}
   .car .body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
   .car h3{font-size:19px;letter-spacing:.02em}
   .car .meta{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:14.5px}
